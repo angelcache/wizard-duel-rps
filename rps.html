@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magical Duel RPS</title>
-  <link rel="stylesheet" href="css/rps.css">
-  <script src="js/rps.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Duel RPS</title>
+    <link rel="stylesheet" href="css/rps.css">
+    <script src="js/rps.js"></script>
+  </head>
 
-</body>
+  <body>
+    <button onclick="play('grass')">
+      Grass
+    </button>
+    <button onclick="play('fire')">
+      Fire
+    </button>
+    <button onclick="play('water')">
+      Water
+    </button>
+
+    <p class="js-human-score">Human Score: 0</p>
+    <p class="js-computer-score">Computer Score: 0</p>
+    <p class="js-round-winner"></p>
+    <p class="js-winner"></p>
+
+  </body>
 </html>
