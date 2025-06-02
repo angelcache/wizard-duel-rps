@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+}
+
+#start {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--blue), var(--pink));
+  width: 100vw;
+  height: 100vh;
+}
+
+.cloud1,
+.cloud2,
+.cloud3 {
+  height: auto;
+  position: absolute;
+}
+
+.cloud1 {
+  width: 25vw;
+  top: 15vh;
+  right: 15vw;
+}
+
+.cloud2 {
+  width: 35vw;
+  bottom: 25vh;
+  left: 0vw;
+}
+
+.cloud3 {
+  width: 40vw;
+  bottom: -2vh;
+  right: 0vw;
+}
+
+.game-logo {
+  width: 40vw;
+  margin-bottom: 20px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#start button {
+  position: relative;
+  border: none;
+  color: var(--blue);
+  font-style: var(--button-text);
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.5vw;
+  background: white;
+  padding: 5px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#start button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(270deg, var(--pink), var(--pink),var(--green), var(--blue), var(--pink), white);
+  background-size: 300%;
+  background-position: 0% 50%;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#start button:hover {
+  color: white;
+}
+
+#start button:hover::before {
+  animation: flows 3s linear infinite;
+  opacity: 1;
+}
+
+@keyframes flows {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.battle-ground {
+  display: flex;
+  width: 50vw;
+  height: 50vw;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.battle-ground img {
+  width: 20vw;
+  height: auto;
+}
