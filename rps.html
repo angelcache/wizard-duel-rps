@@ -24,24 +24,36 @@
     </section>
 
     <section id="game">
-      <div class="battle-ground">
-        <img src="img/user.svg" alt="User">
-        <img src="img/computer.svg" alt="Computer">
-      </div>
-      <button onclick="play('grass')">
-        Grass
-      </button>
-      <button onclick="play('fire')">
-        Fire
-      </button>
-      <button onclick="play('water')">
-        Water
-      </button>
 
-      <p class="js-human-score">Human Score: 0</p>
-      <p class="js-computer-score">Computer Score: 0</p>
-      <p class="js-round-winner"></p>
-      <p class="js-winner"></p>
+      <div class="battle-ground">
+        <div class="user">
+          <p class="js-human-score">Human Score: 0</p>
+          <img src="img/user.svg" alt="User">
+        </div>
+        
+        <div class="computer">
+          <p class="js-computer-score">Computer Score: 0</p>
+          <img src="img/computer.svg" alt="Computer">
+        </div>
+      </div>
+
+      <div class="battle-choices">
+        <button class="fire-button" onclick="play('fire')">
+          FIRE
+        </button>
+        <button class="water-button" onclick="play('water')">
+          WATER
+        </button>
+        <button class="grass-button" onclick="play('grass')">
+          GRASS
+        </button>
+      </div>
+
+      <div>
+      
+        <p class="js-round-winner"></p>
+        <p class="js-winner"></p>
+      </div>
     </section>
 
     <section id="rules">

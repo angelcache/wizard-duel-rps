@@ -109,7 +109,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background: white;
   width: 100vw;
@@ -118,13 +118,54 @@ body {
 
 .battle-ground {
   display: flex;
-  width: 50vw;
-  height: 50vw;
+  background: linear-gradient(var(--pink), var(--green));
+  border-radius: 150px;
+  width: 80vw;
+  height: 50vh;
   align-items: center;
   justify-content: space-between;
+  padding: 0 60px;
 }
 
 .battle-ground img {
-  width: 20vw;
+  width: 24vw;
   height: auto;
+}
+
+.battle-choices {
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
+}
+.fire-button,
+.water-button,
+.grass-button {
+  width: 10vw;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: var(--button-text);
+  color: white;
+  font-size: clamp(14px, 2.5vw, 40px);
+}
+
+.fire-button {
+  padding: 10px 30px;
+  background-color: var(--fire);
+}
+
+.water-button {
+  padding: 10px 20px;
+  background-color: var(--water);
+}
+
+.grass-button {
+  padding: 10px 20px;
+  background-color: var(--grass);
+}
+
+.user,
+.computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
