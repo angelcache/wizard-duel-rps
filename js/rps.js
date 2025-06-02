@@ -1,5 +1,5 @@
 humanScore = computerScore = 0;
-rounds = 0;
+gameRestart = false;
 
 function getComputerSpell() {
   /*
@@ -20,12 +20,21 @@ function play(spell) {
   /*
    * Starts game and checks if it's over
    */
-  if (rounds === 0) {
+
+  const userSpell = document.querySelector(".user-spell");
+  userSpell.src =`img/${spell}.gif`;
+  userSpell.style.width = 20;
+  userSpell.style.height = 20;
+
+
+  if (gameRestart) {
     document.querySelector(".js-winner").innerHTML = '';
   } 
 
-  rounds++;
   const computerSpell = getComputerSpell();
+
+  const compSpell = document.querySelector(".computer-spell");
+  compSpell.src = `img/${computerSpell}.gif`;
 
   switch (computerSpell) {
     case "grass":
@@ -39,8 +48,8 @@ function play(spell) {
       break;
   }
 
-  if (rounds === 5) {
-    gameOver();
+  if (humanScore == 5 || computerScore == 5) {
+    endGame();
   }
 }
 
@@ -105,7 +114,7 @@ function addTie() {
   document.querySelector(".js-round-winner").innerHTML = `The round is a tie.`;
 }
 
-function gameOver() {
+function endGame() {
   /*
    * Resets everything and checks who won
    */
@@ -127,4 +136,5 @@ function showScore() {
    */
   document.querySelector(".js-human-score").innerHTML = `Human Score: ${humanScore}`;
   document.querySelector(".js-computer-score").innerHTML = `Computer Score: ${computerScore}`;
+  gameRestart = true;
 }

@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 #start {
   display: none;
   flex-direction: column;
@@ -127,7 +132,8 @@ body {
   padding: 0 60px;
 }
 
-.battle-ground img {
+.user-img,
+.computer-img {
   width: 24vw;
   height: auto;
 }
@@ -168,4 +174,46 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.user-spell,
+.computer-spell {
+  width: 190px;
+  height: auto;
+}
+
+.human-score,
+.computer-score {
+  position: relative;
+  width: 16vw;
+  height: 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.user-health-bar,
+.computer-health-bar {
+  position: absolute;
+  background-color: var(--gold);
+  border: 4px solid var(--outline);
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.star {
+  position: absolute;
+  width: 5vw;
+  top: -12px;
+  left: -26px;
+}
+
+.star2 {
+  position: absolute;
+  width: 5vw;
+  top: -12px;
+  right: -26px;
 }
