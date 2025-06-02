@@ -1,5 +1,6 @@
-humanScore = computerScore = 0;
-gameRestart = false;
+let humanScore = computerScore = 0;
+let gameRestart = false;
+const maxWidth = document.querySelector(".human-score").offsetWidth;
 
 function getComputerSpell() {
   /*
@@ -94,19 +95,37 @@ function fightWater(computerSpell, spell) {
 
 function addHumanScore(computerSpell, spell) {
   /*
-   * Adds +1 to humans score and announces the win
+   * Decrease computer health bar and announces the win
    */
   humanScore++;
-  showScore();
+
+  computerHealth = document.querySelector(".js-computer-health-bar");
+  if (humanScore == 5) {
+    computerHealth.style.width = 0;
+  } else {
+    let currentWidth = computerHealth.offsetWidth;
+  computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+  }
+
   document.querySelector(".js-round-winner").innerHTML = `You Won the Round! ${spell} is stronger than ${computerSpell} :)`;
 }
 
 function addComputerScore(computerSpell, spell) {
   /*
-   * Adds +1 to computers score and announces the loss
+   * Decreases human health bar and announces the loss
    */
   computerScore++;
-  showScore();
+
+  userHealth = document.querySelector(".js-user-health-bar");
+  
+  let currentWidth = userHealth.offsetWidth;
+
+  if (computerScore == 5) {
+    userHealth.style.width = 0;
+  } else {
+    userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+  }
+
   document.querySelector(".js-round-winner").innerHTML = `You Lost the Round! ${computerSpell} is stronger than ${spell} :(`;
 }
 
@@ -134,7 +153,6 @@ function showScore() {
   /*
    * Shows the Human and Computer Score
    */
-  document.querySelector(".js-human-score").innerHTML = `Human Score: ${humanScore}`;
-  document.querySelector(".js-computer-score").innerHTML = `Computer Score: ${computerScore}`;
-  gameRestart = true;
+  
+  
 }

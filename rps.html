@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/rps.css">
     <link rel="stylesheet" href="css/colours.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <script src="js/rps.js"></script>
+    <script src="js/rps.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Jersey+25&family=Kavoon&family=Monofett&family=Rouge+Script&display=swap" rel="stylesheet">
@@ -28,8 +28,8 @@
       <div class="battle-ground">
         <div class="user">
           
-          <div class="js-human-score human-score">
-            <div class="user-health-bar">
+          <div class="human-score">
+            <div class="js-user-health-bar user-health-bar">
             </div>
             <img class="star" src="img/star.svg" alt="Star">
             Human Score: 0
@@ -42,9 +42,9 @@
         <img class="computer-spell" src="">
 
         <div class="computer">
-          <div class="js-computer-score computer-score">
-            <div class="user-health-bar"></div>
-            <img class="star2" src="img/star.svg" alt="Star">
+          <div class="computer-score">
+            <div class="js-computer-health-bar computer-health-bar"></div>
+            <img class="star" src="img/star.svg" alt="Star">
             Computer Score: 0
           </div>
           <img class="computer-img" src="img/computer.svg" alt="Computer">
