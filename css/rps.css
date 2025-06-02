@@ -54,7 +54,7 @@ p {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   100% {
     transform: translateY(0);
@@ -132,10 +132,22 @@ p {
   padding: 0 60px;
 }
 
+.game-loss {
+  display: none;
+  background: linear-gradient(var(--pink), var(--green));
+  border-radius: 150px;
+  width: 80vw;
+  height: 50vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+}
+
 .user-img,
 .computer-img {
   width: 24vw;
   height: auto;
+  animation: float 2.5s ease-in-out infinite;
 }
 
 .battle-choices {
@@ -143,6 +155,7 @@ p {
   justify-content: space-between;
   width: 50vw;
 }
+
 .fire-button,
 .water-button,
 .grass-button {
@@ -209,4 +222,16 @@ p {
   width: 5vw;
   top: -12px;
   left: -26px;
+}
+
+.winner {
+  font-family: var(--rules-title);
+  font-size: 4em;
+  margin-bottom: 5px;
+  color: var(--outline);
+}
+
+.round-winner {
+  font-family: var(--rules-text);
+  font-size: 1em;
 }

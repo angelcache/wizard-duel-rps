@@ -24,7 +24,11 @@
     </section>
 
     <section id="game">
-      <p class="js-winner"></p>
+      <div>
+        <p class="js-winner winner">choose  a move to start the game</p>
+        <p class="js-round-winner round-winner"></p>
+      </div>
+
       <div class="battle-ground">
         <div class="user">
           
@@ -32,7 +36,6 @@
             <div class="js-user-health-bar user-health-bar">
             </div>
             <img class="star" src="img/star.svg" alt="Star">
-            Human Score: 0
           </div>
 
           <img class="user-img" src="img/user.svg" alt="User">
@@ -45,10 +48,13 @@
           <div class="computer-score">
             <div class="js-computer-health-bar computer-health-bar"></div>
             <img class="star" src="img/star.svg" alt="Star">
-            Computer Score: 0
           </div>
           <img class="computer-img" src="img/computer.svg" alt="Computer">
         </div>
+      </div>
+
+      <div class="game-loss">
+
       </div>
 
       <div class="battle-choices">
@@ -63,10 +69,6 @@
         </button>
       </div>
 
-      <div>
-        <p class="js-round-winner"></p>
-        
-      </div>
     </section>
 
     <section id="rules">

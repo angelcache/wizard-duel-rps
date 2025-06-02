@@ -21,15 +21,24 @@ function play(spell) {
   /*
    * Starts game and checks if it's over
    */
-
   const userSpell = document.querySelector(".user-spell");
   userSpell.src =`img/${spell}.gif`;
   userSpell.style.width = 20;
   userSpell.style.height = 20;
 
+  if (humanScore === 0 && computerScore === 0) {
+    document.querySelector(".js-winner").innerHTML = ''
+  }
 
   if (gameRestart) {
+    userHealth = document.querySelector(".js-user-health-bar");
+    computerHealth = document.querySelector(".js-computer-health-bar");
+
+    userHealth.style.width = "100%";
+    computerHealth.style.width = "100%";
+
     document.querySelector(".js-winner").innerHTML = '';
+    gameRestart = false;
   } 
 
   const computerSpell = getComputerSpell();
@@ -101,13 +110,13 @@ function addHumanScore(computerSpell, spell) {
 
   computerHealth = document.querySelector(".js-computer-health-bar");
   if (humanScore == 5) {
-    computerHealth.style.width = 0;
+    computerHealth.style.width = "1px";
   } else {
     let currentWidth = computerHealth.offsetWidth;
   computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
 
-  document.querySelector(".js-round-winner").innerHTML = `You Won the Round! ${spell} is stronger than ${computerSpell} :)`;
+  document.querySelector(".js-round-winner").innerHTML = `You Won the Round, ${spell} is super effective against ${computerSpell}!`;
 }
 
 function addComputerScore(computerSpell, spell) {
@@ -121,12 +130,12 @@ function addComputerScore(computerSpell, spell) {
   let currentWidth = userHealth.offsetWidth;
 
   if (computerScore == 5) {
-    userHealth.style.width = 0;
+    userHealth.style.width = "1px";
   } else {
     userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
 
-  document.querySelector(".js-round-winner").innerHTML = `You Lost the Round! ${computerSpell} is stronger than ${spell} :(`;
+  document.querySelector(".js-round-winner").innerHTML = `You Lost the Round, ${computerSpell} is stronger than ${spell}!`;
 }
 
 function addTie() {
@@ -138,15 +147,15 @@ function endGame() {
    * Resets everything and checks who won
    */
   if (humanScore > computerScore) {
-    document.querySelector(".js-winner").innerHTML = `You Won the Battle! Congrats!`;
+    document.querySelector(".js-winner").innerHTML = `Game Over. You won :)`;
   } else if (humanScore < computerScore) {
-    document.querySelector(".js-winner").innerHTML = `You Lost the Battle! Try Again.`;
+    document.querySelector(".js-winner").innerHTML = `Game Over. You Lost :(`;
   } else {
     document.querySelector(".js-winner").innerHTML = `The Battle is a Tie!`
   }
 
   humanScore = computerScore = rounds = 0;
-  showScore();
+  gameRestart = true;
 }
 
 function showScore() {

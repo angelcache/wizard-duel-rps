@@ -1,5 +1,6 @@
 :root {
+  --winner-text: 'Kavoon', serif;
   --button-text: 'Jersey 25', serif;
-  --rules-title: 'Rouge Script', serif;
+  --rules-title: 'Rouge Script', cursive;
   --rules-text: 'Architects Daugher', serif;
 }
