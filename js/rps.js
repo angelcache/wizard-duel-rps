@@ -2,8 +2,14 @@ let humanScore = computerScore = 0;
 let gameRestart = false;
 const maxWidth = document.querySelector(".human-score").offsetWidth;
 
-music = document.querySelector(".speaker-icon")
+music = document.querySelector(".speaker-icon");
 music.addEventListener("click", playAudio);
+
+scrollA = document.querySelectorAll("a");
+
+scrollA.forEach((scroll) => {
+  scroll.addEventListener("click", playScrollEffect);
+})
 
 function getComputerSpell() {
   /*
@@ -28,6 +34,8 @@ function play(spell) {
   userSpell.src =`img/${spell}.gif`;
   userSpell.style.width = 20;
   userSpell.style.height = 20;
+
+  playSoundEffect();
 
   if (humanScore === 0 && computerScore === 0) {
     document.querySelector(".js-winner").innerHTML = ''
@@ -107,10 +115,11 @@ function addHumanScore(computerSpell, spell) {
   computerHealth = document.querySelector(".js-computer-health-bar");
   if (humanScore == 5) {
     computerHealth.style.width = "1px";
+    document.querySelector(".js-round-winner").innerHTML = '';
+    return;
   } else {
     let currentWidth = computerHealth.offsetWidth;
   computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
-  document.querySelector(".js-round-winner").innerHTML = '';
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
@@ -146,9 +155,9 @@ function endGame() {
    * Resets everything and checks who won
    */
   if (humanScore > computerScore) {
-    document.querySelector(".js-winner").innerHTML = `Game Over. You won :)`;
+    document.querySelector(".js-winner").innerHTML = `Game Over, you won :)`;
   } else if (humanScore < computerScore) {
-    document.querySelector(".js-winner").innerHTML = `Game Over. computerina won :(`;
+    document.querySelector(".js-winner").innerHTML = `Game Over, computerina won :(`;
   }
 
   humanScore = computerScore = rounds = 0;
@@ -188,4 +197,14 @@ function playAudio() {
     audio.pause();
     speakerIcon.setAttribute('src', "img/mute-icon.png");
   }
+}
+
+function playSoundEffect() {
+  const audio = new Audio("audio/magic.mp3");
+  audio.play();
+}
+
+function playScrollEffect() {
+  const audio = new Audio("audio/scroll.mp3");
+  audio.play();
 }
