@@ -31,14 +31,7 @@ function play(spell) {
   }
 
   if (gameRestart) {
-    userHealth = document.querySelector(".js-user-health-bar");
-    computerHealth = document.querySelector(".js-computer-health-bar");
-
-    userHealth.style.width = "100%";
-    computerHealth.style.width = "100%";
-
-    document.querySelector(".js-winner").innerHTML = '';
-    gameRestart = false;
+    restartGame();
   } 
 
   const computerSpell = getComputerSpell();
@@ -139,7 +132,7 @@ function addComputerScore(computerSpell, spell) {
 }
 
 function addTie() {
-  document.querySelector(".js-round-winner").innerHTML = `The round is a tie.`;
+  document.querySelector(".js-round-winner").innerHTML = `Tie.`;
 }
 
 function endGame() {
@@ -149,19 +142,23 @@ function endGame() {
   if (humanScore > computerScore) {
     document.querySelector(".js-winner").innerHTML = `Game Over. You won :)`;
   } else if (humanScore < computerScore) {
-    document.querySelector(".js-winner").innerHTML = `Game Over. You Lost :(`;
-  } else {
-    document.querySelector(".js-winner").innerHTML = `The Battle is a Tie!`
+    document.querySelector(".js-winner").innerHTML = `Game Over. computerina won :(`;
   }
 
   humanScore = computerScore = rounds = 0;
   gameRestart = true;
 }
 
-function showScore() {
-  /*
-   * Shows the Human and Computer Score
+function restartGame() {
+  /**
+   * Restarts the game when user plays again
    */
-  
-  
+    userHealth = document.querySelector(".js-user-health-bar");
+    computerHealth = document.querySelector(".js-computer-health-bar");
+
+    userHealth.style.width = "100%";
+    computerHealth.style.width = "100%";
+    
+    document.querySelector(".js-winner").innerHTML = '';
+    gameRestart = false;
 }

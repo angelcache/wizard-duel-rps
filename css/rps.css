@@ -123,24 +123,14 @@ p {
 
 .battle-ground {
   display: flex;
+  position: relative;
   background: linear-gradient(var(--pink), var(--green));
-  border-radius: 150px;
+  border-radius: 180px;
   width: 80vw;
-  height: 50vh;
+  height: auto;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
-}
-
-.game-loss {
-  display: none;
-  background: linear-gradient(var(--pink), var(--green));
-  border-radius: 150px;
-  width: 80vw;
-  height: 50vh;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 60px;
+  padding: 60px 80px;
 }
 
 .user-img,
@@ -198,7 +188,7 @@ p {
 .human-score,
 .computer-score {
   position: relative;
-  width: 16vw;
+  width: clamp(200px, 10vw, 400px);
   height: 20px;
   padding: 10px;
   background-color: white;
@@ -226,12 +216,13 @@ p {
 
 .winner {
   font-family: var(--rules-title);
-  font-size: 4em;
+  font-size: 5em;
   margin-bottom: 5px;
   color: var(--outline);
 }
 
 .round-winner {
   font-family: var(--rules-text);
-  font-size: 1em;
+  font-size: 1.5em;
+  color: rgb(51, 51, 51);
 }
