@@ -1,0 +1,342 @@
+
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+#start {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--blue), var(--pink));
+  width: 100vw;
+  height: 100vh;
+  overflow:hidden;
+}
+
+.cloud1,
+.cloud2,
+.cloud3 {
+  height: auto;
+  position: absolute;
+}
+
+.cloud1 {
+  width: 25vw;
+  top: 15vh;
+  right: 15vw;
+}
+
+.cloud2 {
+  width: 35vw;
+  bottom: 25vh;
+  left: 0vw;
+}
+
+.cloud3 {
+  width: 40vw;
+  bottom: -2vh;
+  right: -1vw;
+}
+
+.game-logo {
+  width: 40vw;
+  margin-bottom: 20px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#start a {
+  position: relative;
+  border: none;
+  text-decoration: none;
+  color: var(--blue);
+  font-style: var(--button-text);
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.5vw;
+  background: white;
+  padding: 5px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#start a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(270deg, var(--pink), var(--pink),var(--green), var(--blue), var(--pink), white);
+  background-size: 300%;
+  background-position: 0% 50%;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#start a:hover {
+  color: white;
+}
+
+#start a:hover::before {
+  animation: flows 3s linear infinite;
+  opacity: 1;
+}
+
+@keyframes flows {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+#game {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-evenly;
+  align-items: center;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.battle-ground {
+  display: flex;
+  position: relative;
+  background: linear-gradient(var(--pink), var(--green));
+  border-radius: 180px;
+  width: 80vw;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+}
+
+.user-img,
+.computer-img {
+  width: 24vw;
+  height: auto;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.battle-choices {
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
+}
+
+.reset-button {
+  display: none;
+}
+
+.reset-button,
+.fire-button,
+.water-button,
+.grass-button {
+  width: 10vw;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: var(--button-text);
+  color: white;
+  font-size: clamp(14px, 2.5vw, 40px);
+  cursor: pointer;
+  text-align: center;
+}
+
+.reset-button {
+  background-color: lightgray;
+}
+
+.fire-button {
+  background-color: var(--fire);
+}
+
+.water-button {
+  background-color: var(--water);
+}
+
+.grass-button {
+  background-color: var(--grass);
+}
+
+.user,
+.computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-spell,
+.computer-spell {
+  width: 190px;
+  height: auto;
+}
+
+.human-score,
+.computer-score {
+  position: relative;
+  width: clamp(200px, 10vw, 400px);
+  height: 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.user-health-bar,
+.computer-health-bar {
+  position: absolute;
+  background-color: var(--gold);
+  border: 4px solid var(--outline);
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: width 0.3s ease;
+}
+
+.star {
+  position: absolute;
+  width: 70px;
+  top: -12px;
+  left: -26px;
+}
+
+.winner {
+  font-family: var(--rules-title);
+  font-size: 5em;
+  margin-bottom: 5px;
+  color: var(--outline);
+}
+
+.round-winner {
+  font-family: var(--rules-text);
+  font-size: 1.5em;
+  color: var(--black);
+}
+
+.speaker-icon {
+  position: absolute;
+  width: 2vw;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+}
+
+#rules {
+  display: none;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--blue), var(--pink));
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 100px 100px;
+  overflow: hidden;
+}
+
+.rules-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--blue);
+  width: 60vw;
+  height: 60vh;
+  gap: 2rem;
+}
+
+.rules-container .rules-title {
+  position: absolute;
+  font-family: var(--rules-title);
+  font-size: 10rem;
+  color: var(--gold);
+  -webkit-text-stroke: 2px var(--outline);
+  top: -100px;
+}
+
+.water-text,
+.fire-text,
+.grass-text,
+.rules-container p {
+  font-family: var(--rules-text);
+  font-size: 3rem;
+}
+
+.water-text {
+  color: var(--water);
+}
+
+.fire-text {
+  color: var(--fire);
+}
+
+.grass-text {
+  color: var(--grass);
+}
+
+.rules-container .rules-description {
+  font-family: var(--rules-text);
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--black);
+  width: 50vw;
+}
+
+.computer-char {
+  position: absolute;
+  width: 30vw;
+  height: auto;
+  bottom: -34px;
+  right: 0;
+}
+
+.user-char {
+  position: absolute;
+  width: 30vw;
+  height: auto;
+  bottom: 0;
+  left: 0;
+}
+
+.icon {
+  position: absolute;
+  width: 4vw;
+  top: 2%;
+  right: 2%;
+}
+
+.icon-v2 {
+  position: absolute;
+  width: 4vw;
+  top: 2%;
+  left: 2%;
+}

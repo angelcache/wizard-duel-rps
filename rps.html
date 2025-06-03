@@ -5,24 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magical Duel RPS</title>
     <link rel="stylesheet" href="css/rps.css">
-    <script src="js/rps.js"></script>
+    <link rel="stylesheet" href="css/colours.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/rps.js" defer></script>
+    <script src="js/section.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Jersey+25&family=Kavoon&family=Monofett&family=Rouge+Script&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/icon.jpg" type="image/x-icon">
   </head>
 
   <body>
-    <button onclick="play('grass')">
-      Grass
-    </button>
-    <button onclick="play('fire')">
-      Fire
-    </button>
-    <button onclick="play('water')">
-      Water
-    </button>
+    <audio loop class="audio">
+        <source src ="audio/pixel-music-by-white-records.mp3" type="audio/mp3">
+    </audio>
 
-    <p class="js-human-score">Human Score: 0</p>
-    <p class="js-computer-score">Computer Score: 0</p>
-    <p class="js-round-winner"></p>
-    <p class="js-winner"></p>
+    <section id="start">
+      <img class="cloud1" src="img/cloud1.svg">
+      <img class="cloud2" src="img/cloud2.svg">
+      <img class="cloud3" src="img/cloud3.svg">
 
+      <img class="game-logo" src="img/game-logo.svg">
+      <a class="start-button" href="#game">Start</a>
+
+      <img class="speaker-icon" src="img/mute-icon.png" alt="speaker">
+    </section>
+
+    <section id="game">
+      <div>
+        <p class="js-winner winner">choose  a move to start the game</p>
+        <p class="js-round-winner round-winner"></p>
+      </div>
+
+      <div class="battle-ground">
+        <div class="user">
+          
+          <div class="human-score">
+            <div class="js-user-health-bar user-health-bar">
+            </div>
+            <img class="star" src="img/star.svg" alt="Star">
+          </div>
+
+          <img class="user-img" src="img/user.svg" alt="User">
+        </div>
+
+        <img class="user-spell">
+        <img class="computer-spell">
+
+        <div class="computer">
+          <div class="computer-score">
+            <div class="js-computer-health-bar computer-health-bar"></div>
+            <img class="star" src="img/star.svg" alt="Star">
+          </div>
+          <img class="computer-img" src="img/computer.svg" alt="Computer">
+        </div>
+      </div>
+
+      <button class="reset-button" onclick="restartGame()">
+          RESET
+      </button>
+
+      <div class="battle-choices">
+        <button class="fire-button" onclick="play('fire')">
+          FIRE
+        </button>
+        <button class="water-button" onclick="play('water')">
+          WATER
+        </button>
+        <button class="grass-button" onclick="play('grass')">
+          GRASS
+        </button>
+      </div>
+
+      <a class="rules-icon" href="#rules">
+        <img class="icon" src="img/rules-icon.png" alt="Rules Icon">
+      </a>
+    </section>
+
+    <section id="rules">
+
+      <div class="rules-container">
+        <p class="rules-title">
+          Rules
+        </p>
+
+        <p class="rules-description">
+          Welcome to Magical Duels RPS: this is a Rock Paper Scissors game but with elements!
+        </p>
+        
+        <p>
+          <span class="water-text">water</span>
+           > 
+           <span class="fire-text">fire</span>
+        </p>
+        <p>
+          <span class="fire-text">fire</span>
+           > 
+          <span class="grass-text">grass</span>
+        </p>
+        <p>
+          <span class="grass-text">grass</span> 
+          > 
+          <span class="water-text">water</span>
+        </p>
+      </div>
+      <div>
+        <img class="user-char" src="img/userV2.png" alt="User">
+        <img class="computer-char" src="img/computerV2.png" alt="Computer">
+      </div>
+      
+      <a class="home-icon" href="#game">
+        <img class="icon-v2" src="img/home-icon.png" alt="Home Icon">
+      </a>
+
+      <a class="game-icon" href="#game">
+        <img class="icon" src="img/game-icon.png" alt="Game Icon">
+      </a>
+    </section>
+    
   </body>
 </html>

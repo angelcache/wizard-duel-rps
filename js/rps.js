@@ -1,5 +1,11 @@
-humanScore = computerScore = 0;
-rounds = 0;
+let humanScore = computerScore = 0;
+let resetButton = document.querySelector(".reset-button");
+let fireButton = document.querySelector(".fire-button");
+let waterButton = document.querySelector(".water-button");
+let grassButton = document.querySelector(".grass-button");
+
+music = document.querySelector(".speaker-icon");
+music.addEventListener("click", playAudio);
 
 function getComputerSpell() {
   /*
@@ -20,12 +26,23 @@ function play(spell) {
   /*
    * Starts game and checks if it's over
    */
-  if (rounds === 0) {
-    document.querySelector(".js-winner").innerHTML = '';
-  } 
+  const userSpell = document.querySelector(".user-spell");
+  userSpell.src =`img/${spell}.gif`;
+  userSpell.alt ="User Spell";
+  userSpell.style.width = 20;
+  userSpell.style.height = 20;
 
-  rounds++;
+  playSoundEffect();
+
+  if (humanScore === 0 && computerScore === 0) {
+    document.querySelector(".js-winner").innerHTML = ''
+  }
+
   const computerSpell = getComputerSpell();
+
+  const compSpell = document.querySelector(".computer-spell");
+  compSpell.src = `img/${computerSpell}.gif`;
+  compSpell.alt ="User Spell";
 
   switch (computerSpell) {
     case "grass":
@@ -39,8 +56,8 @@ function play(spell) {
       break;
   }
 
-  if (rounds === 5) {
-    gameOver();
+  if (humanScore == 5 || computerScore == 5) {
+    endGame();
   }
 }
 
@@ -85,46 +102,124 @@ function fightWater(computerSpell, spell) {
 
 function addHumanScore(computerSpell, spell) {
   /*
-   * Adds +1 to humans score and announces the win
+   * Decrease computer health bar and announces the win
    */
   humanScore++;
-  showScore();
-  document.querySelector(".js-round-winner").innerHTML = `You Won the Round! ${spell} is stronger than ${computerSpell} :)`;
+  const maxWidth = document.querySelector(".human-score").offsetWidth;
+
+  computerHealth = document.querySelector(".js-computer-health-bar");
+  if (humanScore == 5) {
+    computerHealth.style.width = "1px";
+    document.querySelector(".js-round-winner").innerHTML = '';
+    return;
+  } else {
+    let currentWidth = computerHealth.offsetWidth;
+    computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+
+  }
+
+  document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
 }
 
 function addComputerScore(computerSpell, spell) {
   /*
-   * Adds +1 to computers score and announces the loss
+   * Decreases human health bar and announces the loss
    */
   computerScore++;
-  showScore();
-  document.querySelector(".js-round-winner").innerHTML = `You Lost the Round! ${computerSpell} is stronger than ${spell} :(`;
+  const maxWidth = document.querySelector(".human-score").offsetWidth;
+
+  userHealth = document.querySelector(".js-user-health-bar");
+  
+  let currentWidth = userHealth.offsetWidth;
+
+  if (computerScore == 5) {
+    userHealth.style.width = "1px";
+    document.querySelector(".js-round-winner").innerHTML = '';
+    return;
+  } else {
+    userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+  }
+
+  document.querySelector(".js-round-winner").innerHTML = `You lost the round, ${computerSpell} is stronger than ${spell}!`;
 }
 
 function addTie() {
-  document.querySelector(".js-round-winner").innerHTML = `The round is a tie.`;
+  document.querySelector(".js-round-winner").innerHTML = `Tie.`;
 }
 
-function gameOver() {
+function endGame() {
   /*
    * Resets everything and checks who won
    */
   if (humanScore > computerScore) {
-    document.querySelector(".js-winner").innerHTML = `You Won the Battle! Congrats!`;
+    playWinningSound();
+    document.querySelector(".js-winner").innerHTML = `Game Over, you won :)`;
   } else if (humanScore < computerScore) {
-    document.querySelector(".js-winner").innerHTML = `You Lost the Battle! Try Again.`;
-  } else {
-    document.querySelector(".js-winner").innerHTML = `The Battle is a Tie!`
+    playLosingSound();
+    document.querySelector(".js-winner").innerHTML = `Game Over, computerina won :(`;
   }
 
+  resetButton.style.display = "inline-block";fireButton.style.display = "None";waterButton.style.display = "None";grassButton.style.display = "None";
+
   humanScore = computerScore = rounds = 0;
-  showScore();
 }
 
-function showScore() {
-  /*
-   * Shows the Human and Computer Score
+function restartGame() {
+  /**
+   * Restarts the game when user plays again
    */
-  document.querySelector(".js-human-score").innerHTML = `Human Score: ${humanScore}`;
-  document.querySelector(".js-computer-score").innerHTML = `Computer Score: ${computerScore}`;
+    resetButton.style.display = "None";fireButton.style.display = "inline-block";waterButton.style.display = "inline-block";grassButton.style.display = "inline-block";
+
+    // Remove spell images
+    const userSpell = document.querySelector(".user-spell");
+    userSpell.src = "";
+    userSpell.alt = "";
+    const compSpell = document.querySelector(".computer-spell");
+    compSpell.src = "";
+    compSpell.alt = "";
+
+    // Set Health Bar to Default
+    userHealth = document.querySelector(".js-user-health-bar");
+    computerHealth = document.querySelector(".js-computer-health-bar");
+    userHealth.style.width = "100%";
+    computerHealth.style.width = "100%";
+    
+    document.querySelector(".js-winner").innerHTML = '';
+    gameRestart = false;
+}
+
+function playAudio() {
+  /**
+   * When user clicks on the speakerIcon, it will
+   * play/mute the music and change the icon to
+   * speaker/mute  icon
+   */
+
+  audio = document.querySelector('.audio');
+  speakerIcon = document.querySelector('.speaker-icon')
+
+  audio.classList.toggle("music-on");
+
+  if (audio.classList.contains("music-on")) {
+    audio.play();
+    speakerIcon.setAttribute('src', "img/speaker-icon.png");
+  } else {
+    audio.pause();
+    speakerIcon.setAttribute('src', "img/mute-icon.png");
+  }
+}
+
+function playSoundEffect() {
+  const audio = new Audio("audio/magic.mp3");
+  audio.play();
+}
+
+function playWinningSound() {
+  const audio = new Audio("audio/win.mp3");
+  audio.play();
+}
+
+function playLosingSound() {
+  const audio = new Audio("audio/lose.mp3");
+  audio.play();
 }
