@@ -1,6 +1,8 @@
 let humanScore = computerScore = 0;
-let gameRestart = false;
-const maxWidth = document.querySelector(".human-score").offsetWidth;
+let resetButton = document.querySelector(".reset-button");
+let fireButton = document.querySelector(".fire-button");
+let waterButton = document.querySelector(".water-button");
+let grassButton = document.querySelector(".grass-button");
 
 music = document.querySelector(".speaker-icon");
 music.addEventListener("click", playAudio);
@@ -34,10 +36,6 @@ function play(spell) {
   if (humanScore === 0 && computerScore === 0) {
     document.querySelector(".js-winner").innerHTML = ''
   }
-
-  if (gameRestart) {
-    restartGame();
-  } 
 
   const computerSpell = getComputerSpell();
 
@@ -105,6 +103,7 @@ function addHumanScore(computerSpell, spell) {
    * Decrease computer health bar and announces the win
    */
   humanScore++;
+  const maxWidth = document.querySelector(".human-score").offsetWidth;
 
   computerHealth = document.querySelector(".js-computer-health-bar");
   if (humanScore == 5) {
@@ -112,8 +111,11 @@ function addHumanScore(computerSpell, spell) {
     document.querySelector(".js-round-winner").innerHTML = '';
     return;
   } else {
+    console.log("Hey");
+    console.log(maxWidth);
     let currentWidth = computerHealth.offsetWidth;
     computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+    console.log(computerHealth.offsetWidth);
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
@@ -124,6 +126,7 @@ function addComputerScore(computerSpell, spell) {
    * Decreases human health bar and announces the loss
    */
   computerScore++;
+  const maxWidth = document.querySelector(".human-score").offsetWidth;
 
   userHealth = document.querySelector(".js-user-health-bar");
   
@@ -134,7 +137,10 @@ function addComputerScore(computerSpell, spell) {
     document.querySelector(".js-round-winner").innerHTML = '';
     return;
   } else {
+    console.log("Hey");
+    console.log(maxWidth);
     userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+    console.log(userHealth.offsetWidth);
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You lost the round, ${computerSpell} is stronger than ${spell}!`;
@@ -154,14 +160,18 @@ function endGame() {
     document.querySelector(".js-winner").innerHTML = `Game Over, computerina won :(`;
   }
 
+  resetButton.style.display = "inline-block";fireButton.style.display = "None";waterButton.style.display = "None";grassButton.style.display = "None";
+
   humanScore = computerScore = rounds = 0;
-  gameRestart = true;
 }
 
 function restartGame() {
   /**
    * Restarts the game when user plays again
    */
+    console.log("hey");
+    resetButton.style.display = "None";fireButton.style.display = "inline-block";waterButton.style.display = "inline-block";grassButton.style.display = "inline-block";
+
     userHealth = document.querySelector(".js-user-health-bar");
     computerHealth = document.querySelector(".js-computer-health-bar");
 

@@ -149,6 +149,11 @@ p {
   width: 50vw;
 }
 
+.reset-button {
+  display: none;
+}
+
+.reset-button,
 .fire-button,
 .water-button,
 .grass-button {
@@ -158,20 +163,23 @@ p {
   font-family: var(--button-text);
   color: white;
   font-size: clamp(14px, 2.5vw, 40px);
+  cursor: pointer;
+  text-align: center;
+}
+
+.reset-button {
+  background-color: lightgray;
 }
 
 .fire-button {
-  padding: 10px 30px;
   background-color: var(--fire);
 }
 
 .water-button {
-  padding: 10px 20px;
   background-color: var(--water);
 }
 
 .grass-button {
-  padding: 10px 20px;
   background-color: var(--grass);
 }
 
@@ -208,6 +216,7 @@ p {
   left: 0;
   bottom: 0;
   right: 0;
+  transition: width 0.3s ease;
 }
 
 .star {
