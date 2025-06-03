@@ -14,13 +14,19 @@
   </head>
 
   <body>
+    <audio loop class="audio">
+        <source src ="audio/pixel-music-by-white-records.mp3" type="audio/mp3">
+    </audio>
+
     <section id="start">
       <img class="cloud1" src="img/cloud1.svg">
       <img class="cloud2" src="img/cloud2.svg">
       <img class="cloud3" src="img/cloud3.svg">
 
       <img class="game-logo" src="img/game-logo.svg">
-      <button>Start</button>
+      <a href="#game">Start</a>
+
+      <img class="speaker-icon" src="img/mute-icon.png" alt="speaker">
     </section>
 
     <section id="game">
@@ -69,6 +75,36 @@
 
     <section id="rules">
 
+      <div class="rules-container">
+        <p class="rules-title">
+          Rules
+        </p>
+
+        <p class="rules-description">
+          Welcome to Magical Duels RPS: this is a Rock Paper Scissors game but with elements!
+        </p>
+        
+        <p>
+          <span class="water-text">water</span>
+           > 
+           <span class="fire-text">fire</span>
+        </p>
+        <p>
+          <span class="fire-text">fire</span>
+           > 
+          <span class="grass-text">grass</span>
+        </p>
+        <p>
+          <span class="grass-text">grass</span> 
+          > 
+          <span class="water-text">water</span>
+        </p>
+      </div>
+      <div>
+        <img class="user-char" src="img/userV2.png" alt="User">
+        <img class="computer-char" src="img/computerV2.png" alt="Computer">
+      </div>
+      
     </section>
   </body>
 </html>

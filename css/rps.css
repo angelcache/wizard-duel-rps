@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
@@ -8,7 +12,7 @@ p {
 }
 
 #start {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: relative;
   justify-content: center;
@@ -61,9 +65,10 @@ p {
   }
 }
 
-#start button {
+#start a {
   position: relative;
   border: none;
+  text-decoration: none;
   color: var(--blue);
   font-style: var(--button-text);
   border-radius: 20px;
@@ -77,7 +82,7 @@ p {
   z-index: 1;
 }
 
-#start button::before {
+#start a::before {
   content: "";
   position: absolute;
   top: 0;
@@ -92,11 +97,11 @@ p {
   opacity: 0;
 }
 
-#start button:hover {
+#start a:hover {
   color: white;
 }
 
-#start button:hover::before {
+#start a:hover::before {
   animation: flows 3s linear infinite;
   opacity: 1;
 }
@@ -224,5 +229,93 @@ p {
 .round-winner {
   font-family: var(--rules-text);
   font-size: 1.5em;
-  color: rgb(51, 51, 51);
+  color: var(--black);
+}
+
+.speaker-icon {
+  position: absolute;
+  width: 2vw;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+}
+
+#rules {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--blue), var(--pink));
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 100px 100px;
+  overflow: hidden;
+}
+
+.rules-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--blue);
+  width: 60vw;
+  height: 60vh;
+  gap: 2rem;
+}
+
+.rules-container .rules-title {
+  position: absolute;
+  font-family: var(--rules-title);
+  font-size: 10rem;
+  color: var(--gold);
+  -webkit-text-stroke: 2px var(--outline);
+  top: -100px;
+}
+
+.water-text,
+.fire-text,
+.grass-text,
+.rules-container p {
+  font-family: var(--rules-text);
+  font-size: 3rem;
+}
+
+.water-text {
+  color: var(--water);
+}
+
+.fire-text {
+  color: var(--fire);
+}
+
+.grass-text {
+  color: var(--grass);
+}
+
+.rules-container .rules-description {
+  font-family: var(--rules-text);
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--black);
+  width: 50vw;
+}
+
+.computer-char {
+  position: absolute;
+  width: 30vw;
+  height: auto;
+  bottom: -34px;
+  right: 0;
+}
+
+.user-char {
+  position: absolute;
+  width: 30vw;
+  height: auto;
+  bottom: 0;
+  left: 0;
 }

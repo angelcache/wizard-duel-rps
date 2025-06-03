@@ -2,6 +2,9 @@ let humanScore = computerScore = 0;
 let gameRestart = false;
 const maxWidth = document.querySelector(".human-score").offsetWidth;
 
+music = document.querySelector(".speaker-icon")
+music.addEventListener("click", playAudio);
+
 function getComputerSpell() {
   /*
    * Randomly returns grass, fire, water as the computers choice
@@ -109,7 +112,7 @@ function addHumanScore(computerSpell, spell) {
   computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
 
-  document.querySelector(".js-round-winner").innerHTML = `You Won the Round, ${spell} is super effective against ${computerSpell}!`;
+  document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
 }
 
 function addComputerScore(computerSpell, spell) {
@@ -128,7 +131,7 @@ function addComputerScore(computerSpell, spell) {
     userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
 
-  document.querySelector(".js-round-winner").innerHTML = `You Lost the Round, ${computerSpell} is stronger than ${spell}!`;
+  document.querySelector(".js-round-winner").innerHTML = `You lost the round, ${computerSpell} is stronger than ${spell}!`;
 }
 
 function addTie() {
@@ -161,4 +164,25 @@ function restartGame() {
     
     document.querySelector(".js-winner").innerHTML = '';
     gameRestart = false;
+}
+
+function playAudio() {
+  /**
+   * When user clicks on the speakerIcon, it will
+   * play/mute the music and change the icon to
+   * speaker/mute  icon
+   */
+
+  audio = document.querySelector('.audio');
+  speakerIcon = document.querySelector('.speaker-icon')
+
+  audio.classList.toggle("music-on");
+
+  if (audio.classList.contains("music-on")) {
+    audio.play();
+    speakerIcon.setAttribute('src', "img/speaker-icon.png");
+  } else {
+    audio.pause();
+    speakerIcon.setAttribute('src', "img/mute-icon.png");
+  }
 }
