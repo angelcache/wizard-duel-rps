@@ -5,12 +5,6 @@ const maxWidth = document.querySelector(".human-score").offsetWidth;
 music = document.querySelector(".speaker-icon");
 music.addEventListener("click", playAudio);
 
-scrollA = document.querySelectorAll("a");
-
-scrollA.forEach((scroll) => {
-  scroll.addEventListener("click", playScrollEffect);
-})
-
 function getComputerSpell() {
   /*
    * Randomly returns grass, fire, water as the computers choice
@@ -119,7 +113,7 @@ function addHumanScore(computerSpell, spell) {
     return;
   } else {
     let currentWidth = computerHealth.offsetWidth;
-  computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+    computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
@@ -201,10 +195,5 @@ function playAudio() {
 
 function playSoundEffect() {
   const audio = new Audio("audio/magic.mp3");
-  audio.play();
-}
-
-function playScrollEffect() {
-  const audio = new Audio("audio/scroll.mp3");
   audio.play();
 }
