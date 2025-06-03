@@ -28,6 +28,7 @@ function play(spell) {
    */
   const userSpell = document.querySelector(".user-spell");
   userSpell.src =`img/${spell}.gif`;
+  userSpell.alt ="User Spell";
   userSpell.style.width = 20;
   userSpell.style.height = 20;
 
@@ -41,6 +42,7 @@ function play(spell) {
 
   const compSpell = document.querySelector(".computer-spell");
   compSpell.src = `img/${computerSpell}.gif`;
+  compSpell.alt ="User Spell";
 
   switch (computerSpell) {
     case "grass":
@@ -111,11 +113,9 @@ function addHumanScore(computerSpell, spell) {
     document.querySelector(".js-round-winner").innerHTML = '';
     return;
   } else {
-    console.log("Hey");
-    console.log(maxWidth);
     let currentWidth = computerHealth.offsetWidth;
     computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
-    console.log(computerHealth.offsetWidth);
+
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
@@ -137,10 +137,7 @@ function addComputerScore(computerSpell, spell) {
     document.querySelector(".js-round-winner").innerHTML = '';
     return;
   } else {
-    console.log("Hey");
-    console.log(maxWidth);
     userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
-    console.log(userHealth.offsetWidth);
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You lost the round, ${computerSpell} is stronger than ${spell}!`;
@@ -155,8 +152,10 @@ function endGame() {
    * Resets everything and checks who won
    */
   if (humanScore > computerScore) {
+    playWinningSound();
     document.querySelector(".js-winner").innerHTML = `Game Over, you won :)`;
   } else if (humanScore < computerScore) {
+    playLosingSound();
     document.querySelector(".js-winner").innerHTML = `Game Over, computerina won :(`;
   }
 
@@ -169,12 +168,19 @@ function restartGame() {
   /**
    * Restarts the game when user plays again
    */
-    console.log("hey");
     resetButton.style.display = "None";fireButton.style.display = "inline-block";waterButton.style.display = "inline-block";grassButton.style.display = "inline-block";
 
+    // Remove spell images
+    const userSpell = document.querySelector(".user-spell");
+    userSpell.src = "";
+    userSpell.alt = "";
+    const compSpell = document.querySelector(".computer-spell");
+    compSpell.src = "";
+    compSpell.alt = "";
+
+    // Set Health Bar to Default
     userHealth = document.querySelector(".js-user-health-bar");
     computerHealth = document.querySelector(".js-computer-health-bar");
-
     userHealth.style.width = "100%";
     computerHealth.style.width = "100%";
     
@@ -205,5 +211,15 @@ function playAudio() {
 
 function playSoundEffect() {
   const audio = new Audio("audio/magic.mp3");
+  audio.play();
+}
+
+function playWinningSound() {
+  const audio = new Audio("audio/win.mp3");
+  audio.play();
+}
+
+function playLosingSound() {
+  const audio = new Audio("audio/lose.mp3");
   audio.play();
 }
