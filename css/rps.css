@@ -319,3 +319,10 @@ p {
   bottom: 0;
   left: 0;
 }
+
+.icon {
+  position: absolute;
+  width: 4vw;
+  top: 2%;
+  right: 2%;
+}

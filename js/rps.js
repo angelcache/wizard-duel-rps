@@ -110,6 +110,7 @@ function addHumanScore(computerSpell, spell) {
   } else {
     let currentWidth = computerHealth.offsetWidth;
   computerHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
+  document.querySelector(".js-round-winner").innerHTML = '';
   }
 
   document.querySelector(".js-round-winner").innerHTML = `You won the round, ${spell} is super effective against ${computerSpell}!`;
@@ -127,6 +128,8 @@ function addComputerScore(computerSpell, spell) {
 
   if (computerScore == 5) {
     userHealth.style.width = "1px";
+    document.querySelector(".js-round-winner").innerHTML = '';
+    return;
   } else {
     userHealth.style.width = (currentWidth - (maxWidth / 5)) + "px";
   }
