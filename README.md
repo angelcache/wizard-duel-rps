@@ -16,3 +16,8 @@ Cast spells, battle your opponent, and be the first to win 5 rounds.
 ## 🛠 Built With
 
 HTML, CSS, JavaScript
+
+---
+  ## 🖼️ Preview
+
+  ![Screenshot](./img/wizard-duel-rps.png)
